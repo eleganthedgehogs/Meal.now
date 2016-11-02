@@ -5,6 +5,8 @@ import { Navigator } from 'react-native';
 import NavBar from './app/NavBar';
 import Login from './app/Login';
 
+import Photo from './app/Photo'
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -37,6 +39,7 @@ class App extends React.Component {
   updateUserId(userId) { this.setState({ userId }); }
   updateSearchRecipes(searchRecipes) { this.setState({ searchRecipes }); }
 
+
   renderScene(route, navigator) {
     return (
       <route.component
@@ -58,7 +61,7 @@ class App extends React.Component {
     return (
       <Navigator
         style={{ flex: 1 }}
-        initialRoute={{ name: 'Login', component: Login }}
+        initialRoute={{ name: 'Photo', component: Photo }}
         renderScene={this.renderScene}
         configureScene={() => Navigator.SceneConfigs.FadeAndroid}
         navigationBar={<NavBar navigator={this.navigator} />}
