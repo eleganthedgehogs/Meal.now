@@ -33,6 +33,7 @@
     "mongoose": "^4.6.4",
     "mongoose-findorcreate": "^0.1.2",
     "morgan": "^1.7.0",
+    "multer": "^1.2.0",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
     "request": "^2.75.0",
