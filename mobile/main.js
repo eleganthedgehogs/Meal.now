@@ -61,7 +61,7 @@ class App extends React.Component {
     return (
       <Navigator
         style={{ flex: 1 }}
-        initialRoute={{ name: 'Photo', component: Photo }}
+        initialRoute={{ name: 'Login', component: Login }}
         renderScene={this.renderScene}
         configureScene={() => Navigator.SceneConfigs.FadeAndroid}
         navigationBar={<NavBar navigator={this.navigator} />}
