@@ -1,5 +1,6 @@
-import React from 'react';
-import { View, Dimensions, Text, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { View, Dimensions, Text, StyleSheet, AsyncStorage } from 'react-native';
+import { Font } from 'exponent';
 
 const width = Dimensions.get('window').width;
 
@@ -7,25 +8,48 @@ const styles = StyleSheet.create({
   logo: {
     width,
     height: 44,
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     borderBottomWidth: 2,
-    borderColor: 'gray',
+    borderColor: 'white',
     alignItems: 'center',
-    alignSelf: 'flex-start',
+    alignSelf: 'flex-start'
   },
   headline: {
+    ...Font.style('ralewayFont'),
     fontSize: 30,
-    fontFamily: 'Futura',
     marginTop: 2,
+    textAlign: 'center',
     backgroundColor: 'rgba(0,0,0,0)',
-    color: 'white',
+    color: 'black'
   },
 });
 
-const LogoDisplay = () => (
-  <View style={styles.logo}>
-    <Text style={styles.headline}>Meal.next</Text>
-  </View>
-);
+class LogoDisplay extends Component {
+  constructor() {
+    super()
+    this.state = {
+      fontLoaded: false,
+    }
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      'ralewayFont': require('../assets/fonts/Raleway-Regular.ttf'),
+    });
+    this.setState({ fontLoaded: true });
+  }
+
+  render() {
+    return (
+      <View style={styles.logo}>
+        {this.state.fontLoaded ? (
+            <Text style={styles.headline}>
+              Meal.next
+            </Text>) : null
+        }
+      </View>
+    )
+  }
+}
 
 export default LogoDisplay;
