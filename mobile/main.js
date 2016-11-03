@@ -1,11 +1,13 @@
 import Exponent from 'exponent';
 import React from 'react';
-import { Navigator } from 'react-native';
+import { Navigator, AsyncStorage } from 'react-native';
 
 import NavBar from './app/NavBar';
 import Login from './app/Login';
 import MealList from './app/MealList';
 import Photo from './app/Photo';
+import Camera from './app/Camera';
+import MealList from './app/MealList';
 
 class App extends React.Component {
   constructor(props) {
@@ -39,7 +41,6 @@ class App extends React.Component {
   updateUserId(userId) { this.setState({ userId }); }
   updateSearchRecipes(searchRecipes) { this.setState({ searchRecipes }); }
 
-
   renderScene(route, navigator) {
     return (
       <route.component
@@ -61,7 +62,7 @@ class App extends React.Component {
     return (
       <Navigator
         style={{ flex: 1 }}
-        initialRoute={{ name: 'Login', component: Login }}
+        initialRoute={{ name: 'MealList', component: MealList }}
         renderScene={this.renderScene}
         configureScene={() => Navigator.SceneConfigs.FadeAndroid}
         navigationBar={<NavBar navigator={this.navigator} />}
