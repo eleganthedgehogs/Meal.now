@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
   container: {
     width: 105,
     height: 40,
-    marginTop: 50,
     backgroundColor: 'white',
     borderWidth: 3,
     borderColor: 'white',
@@ -23,8 +22,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.85,
   },
   container2: {
-    marginTop: 50,
-
     width: 100,
     height: 35,
     alignItems: 'center',
@@ -39,14 +36,24 @@ const styles = StyleSheet.create({
     color: 'white',
     borderRadius: 5,
   },
-  icon: {
-    color: 'dodgerblue',
-    marginTop: 30,
-  }
+  photoCircle: {
+    width: 100,
+    height: 100,
+    borderRadius: 100,
+    backgroundColor: '#1E90FF',
+    alignItems: 'center',
+    marginBottom: 50,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
+  photoButton: {
+    color: 'white',
+    marginTop: 15
+  },
 });
 
-const Button = ({ text, icon, onclick }) => { 
-  if(text !== undefined) {
+const PhotoButton = ({ text, icon, onclick }) => {
+  if (text !== undefined) {
     return (
       <TouchableHighlight
         style={styles.container}
@@ -63,11 +70,11 @@ const Button = ({ text, icon, onclick }) => {
   }
   return (
       <TouchableHighlight
-        onPress={onclick}
+        onPress={onclick} style={styles.photoCircle}
       >
-       <Ionicons name={icon} size={60} style={styles.icon} onPress={onclick} /> 
+       <Ionicons name={icon} style={styles.photoButton} size={65} onPress={onclick} /> 
       </TouchableHighlight>
   ) 
 };
 
-export default Button;
+export default PhotoButton;
