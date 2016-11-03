@@ -7,9 +7,7 @@ import utils from '../Utils/utils.js';
 class Photo extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      token: this.props.getToken()
-    };
+    
     this.token = this.props.getToken();
   }
 
