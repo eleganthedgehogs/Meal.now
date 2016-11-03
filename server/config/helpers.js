@@ -1,12 +1,13 @@
 const Upload = require('s3-uploader');
+const secret = require('./secret.js');
 
 module.exports = new Upload('mealdotnext', {
   aws: {
     path: 'images/',
     region: 'us-west-1',
     acl: 'public-read',
-    accessKeyId: 'AKIAJ6ZO5I2KYNHILMAQ',
-    secretAccessKey: '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',
+    accessKeyId: secret.ACCESS_KEY_ID,
+    secretAccessKey: secret.SECRET_ACCESS_KEY,
   },
 
   cleanup: {

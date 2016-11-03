@@ -20,10 +20,8 @@ router.route('/')
   .get((req, res) => {
     res.end('mollah');
   });
-console.log('GETS TO THE ROUTE');
+
 router.route('/upload').post(upload.single('image'), featureController.uploadImage);
-
-
-// router.route('/location').post(featureController.location);
+router.route('/location').post(featureController.getNearbyPlaces);
 
 module.exports = router;
