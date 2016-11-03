@@ -24,7 +24,7 @@ class Photo extends Component {
   		    </View>
   		</TouchableHighlight>
   	)
-  }9
+  }
 }
 
 const styles = {

@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#1E90FF',
     alignItems: 'center',
     marginBottom: 50,
-    textAlign: 'center',
-    textAlignVertical: 'center',
+    // textAlign: 'center',
+    // textAlignVertical: 'center',
   },
   photoButton: {
     color: 'white',
