@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const mongoUser = 'hog';
-const mongoPassword = 'wild';
-const mongoURI = `mongodb://${mongoUser}:${mongoPassword}@ds031597.mlab.com:31597/mealdotnext2`;
+const mongoUser = 'mdotn';
+const mongoPassword = 'mdotn';
+const mongoURI = `mongodb://${mongoUser}:${mongoPassword}@ds139277.mlab.com:39277/mdotn`;
 const localURI = 'mongodb://localhost/mdotn';
 
 //switch the URI based on local or hosted database

@@ -6,23 +6,23 @@ export default {
 		const photo = {
 		  uri: uri,
 		  type: 'image/jpeg',
-		  name: 'newPhoto.jpg'
+		  name: 'image'
 		};
 
-		const form = new FormData()
-		form.append('memoryImage', photo);
+		const form = new FormData();
+		form.append('image', photo);
 
-		fetch('/api/user/upload', 
+		fetch('http://10.6.19.49:8000/api/feature/upload',
 		  {
 		    body: form,
 		    method: 'POST',
 		    headers: {
 		      'Content-Type': 'multipart/form-data',
-		      'Authorization': token
-		    }
+		      'x-access-token': token,
+		      'date': Date.now(),
+		    },
 		})
 		.then(res => console.log('Response from postNewPhoto:', res))
 		.catch(err => console.log('error', err));
 	}
-
 }

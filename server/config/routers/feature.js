@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/');
   },
   filename: (req, file, cb) => {
-    cb(null, file.filename);
+    cb(null, file.fieldname + req.headers.date + '.jpg');
   },
 });
 
@@ -20,7 +20,10 @@ router.route('/')
   .get((req, res) => {
     res.end('mollah');
   });
-
+console.log('GETS TO THE ROUTE');
 router.route('/upload').post(upload.single('image'), featureController.uploadImage);
 
+
 // router.route('/location').post(featureController.location);
+
+module.exports = router;

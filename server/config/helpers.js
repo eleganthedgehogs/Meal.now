@@ -1,10 +1,12 @@
 const Upload = require('s3-uploader');
 
-const s3 = new Upload('mealdotnext', {
+module.exports = new Upload('mealdotnext', {
   aws: {
     path: 'images/',
     region: 'us-west-1',
     acl: 'public-read',
+    accessKeyId: 'AKIAJ6ZO5I2KYNHILMAQ',
+    secretAccessKey: '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',
   },
 
   cleanup: {
@@ -49,7 +51,3 @@ const s3 = new Upload('mealdotnext', {
     },
   ],
 });
-
-module.exports = {
-  s3: s3,
-};
