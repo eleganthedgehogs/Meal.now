@@ -61,7 +61,8 @@ class App extends React.Component {
     return (
       <Navigator
         style={{ flex: 1 }}
-        initialRoute={{ name: 'MealList', component: MealList }}
+        // initialRoute={{ name: 'MealList', component: MealList }}
+        initialRoute={{ name: 'Login', component: Login }}
         renderScene={this.renderScene}
         configureScene={() => Navigator.SceneConfigs.FadeAndroid}
         navigationBar={<NavBar navigator={this.navigator} />}

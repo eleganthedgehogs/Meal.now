@@ -9,8 +9,8 @@ import HeadBuffer from './HeadBuffer';
 const recipeUrl = 'https://mealdotnext4.herokuapp.com/api/recipe/';
 const mealUrl = 'https://mealdotnext4.herokuapp.com/api/meal/';
 
-const localRecipeUrl = 'http://localhost:8000/api/recipe/';
-const localMealUrl = 'http://localhost:8000/api/meal/'
+const localRecipeUrl = 'http://10.6.19.49:8000/api/recipe/';
+const localMealUrl = 'http://10.6.19.49:8000/api/meal/'
 
 const styles = StyleSheet.create({
   container: {

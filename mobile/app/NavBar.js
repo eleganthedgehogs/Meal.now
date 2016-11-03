@@ -7,6 +7,7 @@ import PhotoButton from './PhotoButton';
 import MealList from './MealList';
 import ShoppingList from './ShoppingList';
 import AddMeal from './AddMeal';
+import Photo from './Photo';
 
 const width = Dimensions.get('window').width;
 
@@ -28,11 +29,14 @@ const moveTo = (navigator, component) => {
 
 const NavBar = (props) => {
   // if (props.navigator.getCurrentRoutes().length > 1) {
+          // <Button icon="ios-list-box" onclick={() => moveTo(props.navigator, MealList)} />
+          // <PhotoButton icon="md-camera" onclick={() => moveTo(props.navigator, ShoppingList)} />
+          // <Button icon="ios-images" onclick={() => moveTo(props.navigator, AddMeal)} />
     return (
       <View style={styles.container}>
-          <Button icon="ios-list-box" onclick={() => moveTo(props.navigator, MealList)} />
-          <PhotoButton icon="md-camera" onclick={() => moveTo(props.navigator, ShoppingList)} />
-          <Button icon="ios-images" onclick={() => moveTo(props.navigator, AddMeal)} />
+        <Button icon="md-list-box" onclick={() => moveTo(props.navigator, Photo)} />
+        <Button icon="md-basket" onclick={() => moveTo(props.navigator, ShoppingList)} />
+        <Button icon="md-add-circle" onclick={() => moveTo(props.navigator, AddMeal)} />
       </View>
     );
   // }

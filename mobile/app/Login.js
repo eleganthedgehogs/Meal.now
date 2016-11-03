@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
 const loginUrl = 'https://mealdotnext4.herokuapp.com/api/user/authenticate';
 const signupUrl = 'https://mealdotnext4.herokuapp.com/api/user';
 
-const localLoginUrl = 'http://localhost:8000/api/user/authenticate';
-const localSignupUrl = 'http://localhost:8000/api/user';
+const localLoginUrl = 'http://10.6.19.49:8000/api/user/authenticate';
+const localSignupUrl = 'http://10.6.19.49:8000/api/user';
 
 const Form = t.form.Form;
 const Person = t.struct({
