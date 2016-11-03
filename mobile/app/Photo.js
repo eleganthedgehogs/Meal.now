@@ -7,47 +7,27 @@ import utils from '../Utils/utils.js';
 class Photo extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      token: this.props.getToken()
+    };
+    this.token = this.props.getToken();
   }
 
-  async getLocationAsync() {
-    const { Location, Permissions } = Exponent;
-    const { status } = await Permissions.askAsync(Permissions.LOCATION);
-
-    if (status === 'granted') {
-      return Location.getCurrentPositionAsync({enableHighAccuracy: true});
-    } else {
-      throw new Error('Location permission not granted');
-    }
-  }
-
-takePhoto() {
-  Exponent.ImagePicker.launchCameraAsync({})
-  .then(image => {
-    if (!image.cancelled) {
-      console.log(this.props.getToken());
-    	utils.postNewPhoto(image.uri, this.props.getToken());
-    }
-  });
+  render() {
+  	return (
+  		<TouchableHighlight 
+  			onPress={() => {
+  				utils.getLocationAsync().then(loc => utils.postLocation(loc, this.token));
+          utils.takePhotoAsync().then(photo => !photo.cancelled && utils.postNewPhoto(photo.uri, this.token));
+  			}} 
+  			style={styles.TouchableHighlight}>
+  		    <View>
+  		    	<Text>Hello World!</Text>
+  		    </View>
+  		</TouchableHighlight>
+  	)
+  }9
 }
-
-render() {
-	return (
-		<TouchableHighlight 
-			onPress={() => {
-				this.getLocationAsync().then(res => console.log(res));
-				this.takePhoto();
-			}} 
-			style={styles.TouchableHighlight}>
-		    <View>
-		    	<Text>Hello World!</Text>
-		    </View>
-		</TouchableHighlight>
-	)
-}
-}
-
-
 
 const styles = {
 	TouchableHighlight: {
@@ -55,6 +35,5 @@ const styles = {
 		flex: 1
 	}
 }
-
 
 export default Photo;
