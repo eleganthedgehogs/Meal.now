@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     width: width * 0.91,
     backgroundColor: 'rgba(192,192,192,.15)',
     borderRadius: 18,
-    textAlign: 'center'
+    // textAlign: 'center'
   },
   icon: {
     borderRadius: 110,

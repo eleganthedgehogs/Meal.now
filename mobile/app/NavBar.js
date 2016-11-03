@@ -8,7 +8,7 @@ import MealList from './MealList';
 import ShoppingList from './ShoppingList';
 import AddMeal from './AddMeal';
 import Photo from './Photo';
-
+import utils from '../Utils/utils'
 const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
@@ -28,19 +28,22 @@ const moveTo = (navigator, component) => {
 };
 
 const NavBar = (props) => {
-  // if (props.navigator.getCurrentRoutes().length > 1) {
-          // <Button icon="ios-list-box" onclick={() => moveTo(props.navigator, MealList)} />
-          // <PhotoButton icon="md-camera" onclick={() => moveTo(props.navigator, ShoppingList)} />
-          // <Button icon="ios-images" onclick={() => moveTo(props.navigator, AddMeal)} />
+  const token = props.getToken();
+   
+  if (props.navigator.getCurrentRoutes().length > 1) {
     return (
       <View style={styles.container}>
-        <Button icon="ios-list-box" onclick={() => moveTo(props.navigator, Photo)} />
-        <PhotoButton icon="md-camera" onclick={() => moveTo(props.navigator, ShoppingList)} />
+          <Button icon="ios-list-box" onclick={() => moveTo(props.navigator, ShoppingList)} />
+          <PhotoButton icon="md-camera" onclick={() => {
+            utils.getLocationAsync().then(loc => utils.postLocation(loc, token));
+            utils.takePhotoAsync().then(photo => !photo.cancelled && utils.postNewPhoto(photo.uri, token));
+          }} />
         <Button icon="ios-images" onclick={() => moveTo(props.navigator, AddMeal)} />
-      </View>
-    );
-  // }
-  return null;
+      </View>      
+    )    
+  } else {
+    return null;
+  }
 };
 
 export default NavBar;

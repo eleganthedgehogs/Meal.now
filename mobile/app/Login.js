@@ -126,8 +126,8 @@ export default class Login extends React.Component {
   // }
 
   authUser(url) {
-    const value = this.refs.form.getValue();
-    if (value) {
+    // const value = this.refs.form.getValue(); // uncomment later
+    if (value = true) {
       fetch(url, {
         method: 'POST',
         headers: {
@@ -135,8 +135,8 @@ export default class Login extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: value.username,
-          password: value.password,
+          username: 'q', // repalce username
+          password: 'q', // replace password
         }),
       })
       .then(response => response.json())
@@ -157,6 +157,9 @@ export default class Login extends React.Component {
   }
 
   render() {
+    this.authUser(localLoginUrl);
+    return null
+
     return (
       <View style={styles.main}>
         <Image

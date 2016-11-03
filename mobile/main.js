@@ -1,12 +1,18 @@
 import Exponent from 'exponent';
 import React from 'react';
-import { Navigator, AsyncStorage } from 'react-native';
+import { Navigator, AsyncStorage, Text, View } from 'react-native';
 
 import NavBar from './app/NavBar';
 import Login from './app/Login';
 import MealList from './app/MealList';
 import Photo from './app/Photo';
 import Camera from './app/Camera';
+
+var Header = () => (
+  <View style={{height: 40}}>
+    <Text>12345</Text>
+  </View>
+)
 
 class App extends React.Component {
   constructor(props) {
@@ -59,14 +65,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <Navigator
-        style={{ flex: 1 }}
-        // initialRoute={{ name: 'MealList', component: MealList }}
-        initialRoute={{ name: 'Login', component: Login }}
-        renderScene={this.renderScene}
-        configureScene={() => Navigator.SceneConfigs.FadeAndroid}
-        navigationBar={<NavBar navigator={this.navigator} />}
-      />
+      <View style={{flex: 1}}>
+        <Header />
+        <Navigator
+          style={{ flex: 1 }}
+          // initialRoute={{ name: 'MealList', component: MealList }}
+          initialRoute={{ name: 'Login', component: Login }}
+          renderScene={this.renderScene}
+          configureScene={() => Navigator.SceneConfigs.FadeAndroid}
+          navigationBar={<NavBar navigator={this.navigator} getToken={this.getToken} />}
+        />
+      </View>
     );
   }
 }

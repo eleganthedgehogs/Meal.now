@@ -77,8 +77,6 @@ export default class AddMeal extends React.Component {
     return (
       <View style={styles.container}>
         <HeadBuffer />
-        <LogoDisplay />
-        <Searchbar enter={this.getData} />
         <ScrollView
           contentContainerStyle={styles.contentContainer}
           showsVerticalScrollIndicator={false}

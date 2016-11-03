@@ -36,10 +36,14 @@ class LogoDisplay extends Component {
     await Font.loadAsync({
       'ralewayFont': require('../assets/fonts/Raleway-Regular.ttf'),
     });
-    this.setState({ fontLoaded: true });
+      this.setState({ fontLoaded: true });
   }
 
+  // async componentWillUnmount() {
+  // }
+
   render() {
+    console.log('Rendering inside LogoDisplay')
     return (
       <View style={styles.logo}>
         {this.state.fontLoaded ? (
