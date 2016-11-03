@@ -33,7 +33,7 @@ const NavBar = (props) => {
   if (props.navigator.getCurrentRoutes().length > 1) {
     return (
       <View style={styles.container}>
-          <Button icon="ios-list-box" onclick={() => moveTo(props.navigator, ShoppingList)} />
+          <Button icon="ios-list-box" onclick={() => moveTo(props.navigator, MealList)} />
           <PhotoButton icon="md-camera" onclick={() => {
             utils.getLocationAsync().then(loc => utils.postLocation(loc, token));
             utils.takePhotoAsync().then(photo => !photo.cancelled && utils.postNewPhoto(photo.uri, token));
