@@ -42,7 +42,6 @@ export default class Searchbar extends React.Component {
           // value={this.state.text}
           onSubmitEditing={() => this.props.enter(this.state.text)}
         >
-        <Entypo name="magnifying-glass" size={32} style={styles.icon} />
         </TextInput>
       </View>
     );

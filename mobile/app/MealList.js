@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, Text} from 'react-native';
 import MealTile from './MealTile';
 import InfoDisplay from './InfoDisplay';
 import LogoDisplay from './LogoDisplay';
 import HeadBuffer from './HeadBuffer';
 import HeaderDisplay from './HeaderDisplay';
+import Header from './Header';
+
 
 const userUrl = 'https://mealdotnext4.herokuapp.com/api/user/';
 const mealUrl = 'https://mealdotnext4.herokuapp.com/api/meal/';
@@ -79,22 +81,17 @@ export default class MealList extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView
-          contentContainerStyle={styles.contentContainer}
-          showsVerticalScrollIndicator={false}
-          alwaysBounceVertical
-        >
-          {this.props.getMealList().map((meal, i) => (
-            <MealTile
-              recipe={meal.recipe}
-              showInfo={this.gotoNext}
-              key={i}
-              mealId={meal._id} // eslint-disable-line no-underscore-dangle
-            />
-          ))}
-        </ScrollView>
-      </View>
+      <View>
+        <Header />
+        {this.props.getMealList().map((meal, i) => (
+          <MealTile
+            recipe={meal.recipe}
+            showInfo={this.gotoNext}
+            key={i}
+            mealId={meal._id} // eslint-disable-line no-underscore-dangle
+          />
+        ))}
+    </View>
     );
   }
 }
