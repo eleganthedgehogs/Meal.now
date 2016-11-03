@@ -4,8 +4,8 @@ import { Navigator } from 'react-native';
 
 import NavBar from './app/NavBar';
 import Login from './app/Login';
-
-import Photo from './app/Photo'
+import MealList from './app/MealList';
+import Photo from './app/Photo';
 
 class App extends React.Component {
   constructor(props) {
