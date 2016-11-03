@@ -34,9 +34,9 @@ const NavBar = (props) => {
           // <Button icon="ios-images" onclick={() => moveTo(props.navigator, AddMeal)} />
     return (
       <View style={styles.container}>
-        <Button icon="md-list-box" onclick={() => moveTo(props.navigator, Photo)} />
-        <Button icon="md-basket" onclick={() => moveTo(props.navigator, ShoppingList)} />
-        <Button icon="md-add-circle" onclick={() => moveTo(props.navigator, AddMeal)} />
+        <Button icon="ios-list-box" onclick={() => moveTo(props.navigator, Photo)} />
+        <PhotoButton icon="md-camera" onclick={() => moveTo(props.navigator, ShoppingList)} />
+        <Button icon="ios-images" onclick={() => moveTo(props.navigator, AddMeal)} />
       </View>
     );
   // }
