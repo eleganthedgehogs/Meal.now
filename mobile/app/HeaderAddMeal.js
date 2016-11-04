@@ -1,28 +1,37 @@
 import React from 'react';
-import { View, Dimensions, StyleSheet, AsyncStorage  } from 'react-native';
-import {Text, Header} from 'native-base';
+import { StyleSheet } from 'react-native';
+import { Title, Header, Button, Icon } from 'native-base';
+import { Ionicons } from '@exponent/vector-icons';
 
-const width = Dimensions.get('window').width;
-
-const styles = StyleSheet.create({
-  headline: {
-    fontFamily: 'Verdana',
-    fontSize: 30,
-    lineHeight: 30,
-    marginTop: 2,
-    backgroundColor: 'rgba(0,0,0,0)',
-    color: 'black'
-  },
-});
 
 const AddMealHeader = () => {
 	return (
-      <Header>
-        <Text style={styles.headline}>
+      <Header style={styles.header}>
+        <Button transparent>
+          <Ionicons name='ios-arrow-back' size={30} />
+        </Button>
+
+        <Title style={styles.headline}>
           Meal.find
-        </Text>
+        </Title>
       </Header>
  	)
 }
 
 export default AddMealHeader;
+
+/************************ STYLES *************************/
+
+const styles = StyleSheet.create({
+  headline: {
+    fontFamily: 'Verdana',
+    fontSize: 24,
+    lineHeight: 24,
+    backgroundColor: 'white',
+    color: 'black'
+  },
+  header: {
+    backgroundColor: 'white',
+    shadowOpacity: 0
+  }
+});
