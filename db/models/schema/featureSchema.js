@@ -4,9 +4,9 @@ const FeatureSchema = new mongoose.Schema({
   name: String,
   restaurantName: String,
   tags: [String],
-  date: Date,
+  date: Number,
   uri: String,
-  nutritionalInfo: String
+  nutritionalInfo: String,
 });
 
 module.exports = FeatureSchema;

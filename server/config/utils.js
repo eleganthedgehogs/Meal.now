@@ -60,6 +60,7 @@ const getMenu = (id, tags) => {
     const menu = menuItems.reduce((allItems, list) => {
       return allItems.concat(list);
     }, []);
+    console.log(menu);
 
     return menu.map((item) => {
       return {
