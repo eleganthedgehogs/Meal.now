@@ -6,9 +6,10 @@ import LogoDisplay from './LogoDisplay';
 import HeadBuffer from './HeadBuffer';
 import HeaderDisplay from './HeaderDisplay';
 import Header from './Header';
-import ActionButton from 'react-native-action-button'
+import ActionButton from './ActionButton'
 import Ionicons from '@exponent/vector-icons';
 import IP from '../Utils/IP';
+
 
 const userUrl = 'https://mealdotnext4.herokuapp.com/api/user/';
 const mealUrl = 'https://mealdotnext4.herokuapp.com/api/meal/';
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     height: 22,
     color: 'white',
-  },
+  }
 });
 
 export default class MealList extends React.Component {
@@ -94,8 +95,8 @@ export default class MealList extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header />
-
+        <Header style={styles.header}/>
+        
         {this.props.getMealList().map((meal, i) => (
           <MealTile
             recipe={meal.recipe}
@@ -105,11 +106,7 @@ export default class MealList extends React.Component {
           />
         ))}
 
-      <ActionButton buttonColor="rgba(231,76,60,1)">
-        <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => console.log("notes tapped!")}>
-          <Ionicons name="ios-search" style={styles.actionButtonIcon} /> 
-        </ActionButton.Item>
-      </ActionButton>
+        <ActionButton />
 
     </View>
     );

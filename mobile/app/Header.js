@@ -7,17 +7,20 @@ const width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   headline: {
     fontFamily: 'Verdana',
-    fontSize: 30,
-    lineHeight: 30,
-    marginTop: 2,
-    backgroundColor: 'rgba(0,0,0,0)',
+    fontSize: 24,
+    lineHeight: 24,
+    backgroundColor: 'white',
     color: 'black'
   },
+  header: {
+    backgroundColor: 'white',
+    shadowOpacity: 0
+  }
 });
 
 const MainHeader = () => {
 	return (
-      <Header>
+      <Header style={styles.header}>
         <Text style={styles.headline}>
           Meal.next
         </Text>
