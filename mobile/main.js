@@ -7,6 +7,7 @@ import Login from './app/Login';
 import MealList from './app/MealList';
 import Photo from './app/Photo';
 import Camera from './app/Camera';
+import ActionButton from './app/ActionButton'
 
 class App extends React.Component {
   constructor(props) {
