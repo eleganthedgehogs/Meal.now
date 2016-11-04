@@ -12,6 +12,7 @@
     "native-base": "^0.5.12",
     "react": "~15.3.2",
     "react-native": "github:exponentjs/react-native#sdk-10.1.2",
+    "react-native-action-button": "^2.0.13",
     "react-native-blur": "^1.1.1",
     "react-native-scrollable-tab-view": "^0.6.0",
     "tcomb-form-native": "^0.6.1"

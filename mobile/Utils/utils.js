@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Exponent from 'exponent';
+import IP from './IP.js';
 
 /*********************************   PHOTO  ***********************************/
 
 const takePhotoAsync = async () => await Exponent.ImagePicker.launchCameraAsync({});
+const postNewPhotoURL = IP.postNewPhotoURL;
 
-
-const postNewPhoto = (uri, token) => {
+const postNewPhoto = (uri, token, date) => {
 	const photo = {
 	  uri: uri,
 	  type: 'image/jpeg',
@@ -16,14 +17,14 @@ const postNewPhoto = (uri, token) => {
 	const form = new FormData();
 	form.append('image', photo);
 
-	fetch('http://10.6.19.49:8000/api/feature/upload',
+	fetch(postNewPhotoURL,
 	  {
 	    body: form,
 	    method: 'POST',
 	    headers: {
 	      'Content-Type': 'multipart/form-data',
 	      'x-access-token': token,
-	      'date': Date.now(),
+	      'date': date,
 	    },
 	})
 	.then(res => console.log('Response from postNewPhoto:', res))
@@ -31,6 +32,8 @@ const postNewPhoto = (uri, token) => {
 }
 
 /*********************************   LOCATION  ***********************************/
+
+const postLocationURL = IP.postLocationURL;
 
 const getLocationAsync = async () => {
   const { Location, Permissions } = Exponent;
@@ -43,15 +46,16 @@ const getLocationAsync = async () => {
   }
 }
 
-const postLocation = (loc, token) => {
+const postLocation = (loc, token, date) => {
 	console.log('sending location', loc)
-	fetch('http://10.6.19.49:8000/api/feature/location',
+	fetch(postLocationURL,
 	  {
 	    body: JSON.stringify(loc),
 	    method: 'POST',
 	    headers: {
 	      'Content-Type': 'application/json',
 	      'x-access-token': token,
+	      'date': date,
 	    },
 	})
 	.then(res => console.log('Response from postNewPhoto:', res))

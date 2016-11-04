@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, TextInput, Dimensions } from 'react-native';
 import { Ionicons, Foundation, Entypo } from '@exponent/vector-icons';
+import SearchIcon from './SearchIcon';
 
 const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    // alignItems: 'center',
     width: width * 0.9,    
   },
   textInput: {
@@ -17,11 +18,14 @@ const styles = StyleSheet.create({
     // textAlign: 'center'
   },
   icon: {
-    borderRadius: 110,
-    color: "dodgerblue",
-    alignSelf: 'flex-start',
-    marginTop: 3,
-    marginLeft: 5
+    // borderRadius: 110,
+    // color: "dodgerblue",
+    // alignSelf: 'flex-start',
+    // marginTop: 3,
+    // marginLeft: 5
+    position: 'absolute',
+    top: 100,
+    right: 25
   }
 });
 
