@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, Dimensions, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { Container, Content, Card, CardItem, Thumbnail, Icon } from 'native-base';
 
 const width = Dimensions.get('window').width;
 
@@ -53,21 +54,29 @@ const styles = StyleSheet.create({
 });
 
 const Tile = ({ recipe, mealId, showInfo }) => (
-  <TouchableHighlight
-    style={styles.tile}
-    onPress={() => showInfo(recipe, mealId)}
-  >
-    <Image
-      style={styles.picture}
-      source={{ uri: recipe.image }}
-    >
-      <View style={styles.textwrap}>
-        <Text style={styles.headline}>
-          {recipe.label}
-        </Text>
-      </View>
-    </Image>
-  </TouchableHighlight>
-);
+  <CardItem >                       
+      <Image source={{ uri: recipe.image }} />
+      <Text>NativeBase</Text>
+      <Text note>April 15, 2016</Text>
+  </CardItem>
+)
+
+// const Tile = ({ recipe, mealId, showInfo }) => (
+//   <TouchableHighlight
+//     style={styles.tile}
+//     onPress={() => showInfo(recipe, mealId)}
+//   >
+//     <Image
+//       style={styles.picture}
+//       source={{ uri: recipe.image }}
+//     >
+//       <View style={styles.textwrap}>
+//         <Text style={styles.headline}>
+//           {recipe.label}
+//         </Text>
+//       </View>
+//     </Image>
+//   </TouchableHighlight>
+// );
 
 export default Tile;
