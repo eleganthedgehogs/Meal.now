@@ -8,7 +8,7 @@ const AddMealHeader = () => {
 	return (
       <Header style={styles.header}>
         <Button transparent>
-          <Ionicons name='ios-arrow-back' size={30} />
+          <Ionicons name='ios-arrow-back' size={0} />
         </Button>
 
         <Title style={styles.headline}>
