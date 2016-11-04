@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import t from 'tcomb-form-native';
 import MealList from './MealList';
+import IP from '../Utils/IP';
 
 const width = Dimensions.get('window').width;
 const background = require('../assets/resized_background.jpg');
@@ -74,8 +75,8 @@ const styles = StyleSheet.create({
 const loginUrl = 'https://mealdotnext4.herokuapp.com/api/user/authenticate';
 const signupUrl = 'https://mealdotnext4.herokuapp.com/api/user';
 
-const localLoginUrl = 'http://10.6.19.49:8000/api/user/authenticate';
-const localSignupUrl = 'http://10.6.19.49:8000/api/user';
+const localLoginUrl = IP.localLoginUrl;
+const localSignupUrl = IP.localSignupUrl;
 
 const Form = t.form.Form;
 const Person = t.struct({
@@ -126,8 +127,10 @@ export default class Login extends React.Component {
   // }
 
   authUser(url) {
-    // const value = this.refs.form.getValue(); // uncomment later
-    if (value = true) {
+    console.log('calling auth user with', url)
+    console.log('IP', IP)
+    const value = this.refs.form.getValue();
+    if (value) {
       fetch(url, {
         method: 'POST',
         headers: {
@@ -135,8 +138,8 @@ export default class Login extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: 'q', // repalce username
-          password: 'q', // replace password
+          username: value.username,
+          password: value.password,
         }),
       })
       .then(response => response.json())
@@ -157,9 +160,6 @@ export default class Login extends React.Component {
   }
 
   render() {
-    this.authUser(localLoginUrl);
-    return null
-
     return (
       <View style={styles.main}>
         <Image

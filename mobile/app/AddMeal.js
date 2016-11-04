@@ -6,15 +6,18 @@ import LogoDisplay from './LogoDisplay';
 import InfoDisplay from './InfoDisplay';
 import HeadBuffer from './HeadBuffer';
 import HeaderAddMeal from './HeaderAddMeal';
+import SearchIcon from './SearchIcon';
+import IP from '../Utils/IP';
 
 const recipeUrl = 'https://mealdotnext4.herokuapp.com/api/recipe/';
 const mealUrl = 'https://mealdotnext4.herokuapp.com/api/meal/';
 
-const localRecipeUrl = 'http://10.6.19.49:8000/api/recipe/';
-const localMealUrl = 'http://10.6.19.49:8000/api/meal/'
+const localRecipeUrl = IP.localRecipeUrl;
+const localMealUrl = IP.localMealUrl;
 
 const styles = StyleSheet.create({
   container: {
+    position: 'relative',
     flex: 1,
     alignItems: 'center',
   },
@@ -23,6 +26,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 60,
   },
+  icon: {
+    position: 'absolute',
+    top: 100,
+    right: 25
+  }
 });
 
 export default class AddMeal extends React.Component {
