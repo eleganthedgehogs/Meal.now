@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 
 const FeatureSchema = new mongoose.Schema({
   name: String,
-  nutritionalInfo: String,
+  restaurantName: String,
   tags: [String],
-  time: Date,
-  url: String,
+  date: Date,
+  uri: String,
+  nutritionalInfo: String
 });
 
 module.exports = FeatureSchema;
