@@ -5,9 +5,9 @@ import IP from './IP.js';
 /*********************************   PHOTO  ***********************************/
 
 const takePhotoAsync = async () => await Exponent.ImagePicker.launchCameraAsync({});
-const postNewPhotoURL = IP.postNewPhotoURL;
+const postPhotoAndLocationURL = IP.postPhotoAndLocationURL;
 
-const postNewPhoto = (uri, token, date) => {
+const postPhotoAndLocation = (uri, token, date, location) => {
 	const photo = {
 	  uri: uri,
 	  type: 'image/jpeg',
@@ -17,7 +17,8 @@ const postNewPhoto = (uri, token, date) => {
 	const form = new FormData();
 	form.append('image', photo);
 
-	fetch(postNewPhotoURL,
+	console.log('location', location)
+	fetch(postPhotoAndLocationURL,
 	  {
 	    body: form,
 	    method: 'POST',
@@ -25,10 +26,12 @@ const postNewPhoto = (uri, token, date) => {
 	      'Content-Type': 'multipart/form-data',
 	      'x-access-token': token,
 	      'date': date,
+	      'latitude': location.coords.latitude,
+	      'longitude': location.coords.longitude
 	    },
 	})
-	.then(res => console.log('Response from postNewPhoto:', res))
-	.catch(err => console.log('Error postNewPhoto (utils.js):', err));
+	.then(res => console.log('Response from postPhotoAndLocation:', res))
+	.catch(err => console.log('Error postPhotoAndLocation (utils.js):', err));
 }
 
 /*********************************   LOCATION  ***********************************/
@@ -46,21 +49,58 @@ const getLocationAsync = async () => {
   }
 }
 
-const postLocation = (loc, token, date) => {
-	console.log('sending location', loc)
-	fetch(postLocationURL,
-	  {
-	    body: JSON.stringify(loc),
-	    method: 'POST',
-	    headers: {
-	      'Content-Type': 'application/json',
-	      'x-access-token': token,
-	      'date': date,
-	    },
+/*********************************   RESTAURANTS  ***********************************/
+
+const getRestaurantsURL = IP.getRestaurantsURL;
+const getRestaurantMenuURL = IP.getRestaurantMenuURL;
+const getMenuItemURL = IP.getMenuItemURL;
+
+const getRestaurants = (lat, long, token) => {
+	return fetch(`${getRestaurantsURL}?latitude=${lat}&longitude=${long}`,
+	{
+	  method: 'GET',
+	  headers: {
+	    'Content-Type': 'application/json',
+	    'x-access-token': token
+	  },
 	})
-	.then(res => console.log('Response from postNewPhoto:', res))
-	.catch(err => console.log('Erros postLocation (utils.js):', err));
-} 
+	.then((response) => response.json())
+	.then(responseJSON => responseJSON)
+	.catch((error) => console.error('Error from get restaurants', error));
+}
+
+const getRestaurantMenu = (name, date, token) => {
+	console.log(name, date, token, 'from getRestaurantMenu')
+	return fetch(`${getRestaurantMenuURL}?name=${name}&date=${date}`,
+	{
+	  method: 'GET',
+	  headers: {
+	    'Content-Type': 'application/json',
+	    'x-access-token': token
+	  },
+	})
+	.then((response) => response.json())
+	.then(responseJSON => responseJSON)
+	.catch((error) => console.error('Error from get getRestaurantMenu', error));
+}
+
+const getMenuItem = (item, date, token) => {
+	return fetch(`${getMenuItemURL}?id=${item.id}&name=${item.name}&date=${date}`,
+	{
+	  method: 'GET',
+	  headers: {
+	    'Content-Type': 'application/json',
+	    'x-access-token': token
+	  },
+	})
+	.then((response) => response.json())
+	.then(responseJSON => {
+		console.log('Response JSON in getMenuItem in utils:', responseJSON);
+		return responseJSON;
+	})
+	.catch((error) => console.error('Error from get getMenuItem', error));
+
+}
 
 
-export default { takePhotoAsync, postNewPhoto, getLocationAsync, postLocation }
+export default { takePhotoAsync, postPhotoAndLocation, getMenuItem, getLocationAsync, getRestaurants, getRestaurantMenu }

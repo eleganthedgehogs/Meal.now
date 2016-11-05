@@ -1,3 +1,4 @@
+'use strict';
 const recipeRouter = require('./routers/recipe.js');
 const userRouter = require('./routers/user.js');
 const mealRouter = require('./routers/meal.js');

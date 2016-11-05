@@ -1,3 +1,4 @@
+'use strict';
 const Upload = require('s3-uploader');
 const secret = require('./secret.js');
 

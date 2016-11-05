@@ -1,3 +1,4 @@
+'use strict';
 const rp = require('request-promise');
 const secret = require('./secret.js');
 const Promise = require('bluebird');

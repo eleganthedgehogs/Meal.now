@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const userController = require('../../../db/controllers/userController.js');
 const isAuthenticated = require('../auth.js');
