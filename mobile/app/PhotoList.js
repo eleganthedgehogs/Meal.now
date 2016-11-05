@@ -21,7 +21,7 @@ class PhotoList extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Header />
+				<Header title={'Meal.Now'}/>
 
 				<ScrollView
 				  contentContainerStyle={styles.conatiner}

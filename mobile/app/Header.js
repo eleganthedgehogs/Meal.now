@@ -4,11 +4,11 @@ import {Text, Header} from 'native-base';
 
 const width = Dimensions.get('window').width;
 
-const MainHeader = () => {
+const MainHeader = (props) => {
 	return (
       <Header style={styles.header}>
         <Text style={styles.headline}>
-          Meal.next
+          {props.title}
         </Text>
       </Header>
  	)
