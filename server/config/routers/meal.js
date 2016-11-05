@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const mealController = require('../../../db/controllers/mealController.js');
 

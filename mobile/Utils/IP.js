@@ -15,7 +15,10 @@ const localUserUrl = `http://${IP_ADDRESS}:${PORT}/api/user/`;
 // const localMealUrl = `http://${IP_ADDRESS}:${PORT}/api/meal/`; // duplicate
 
 /*********************   Utils.js   ***********************/
-const postNewPhotoURL = `http://${IP_ADDRESS}:${PORT}/api/feature/upload`;
-const postLocationURL = `http://${IP_ADDRESS}:${PORT}/api/feature/location`;
+const postPhotoAndLocationURL = `http://${IP_ADDRESS}:${PORT}/api/feature/upload`;
+const getRestaurantsURL = `http://${IP_ADDRESS}:${PORT}/api/feature/location`;
+const getRestaurantMenuURL = `http://${IP_ADDRESS}:${PORT}/api/feature/menu`;
+const getMenuItemURL = `http://${IP_ADDRESS}:${PORT}/api/feature/item`;
 
-export default { localRecipeUrl, localMealUrl, localLoginUrl, localSignupUrl, localUserUrl, postNewPhotoURL, postLocationURL }
+
+export default { getMenuItemURL, getRestaurantMenuURL, localRecipeUrl, localMealUrl, localLoginUrl, localSignupUrl, localUserUrl, postPhotoAndLocationURL, getRestaurantsURL }
