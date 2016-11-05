@@ -4,8 +4,8 @@ import { CardItem } from 'native-base';
 
 const Tile = ({ recipe, mealId, showInfo }) => (
   <CardItem style={styles.card} onPress={() => showInfo(recipe, mealId)} >                       
-      <Image source={{ uri: recipe.image }} />
       <Text style={styles.text} >{recipe.label}</Text>
+      <Image source={{ uri: recipe.image }} />
   </CardItem>
 )
 
@@ -14,11 +14,12 @@ export default Tile;
 /************************ STYLES *************************/
 const styles = StyleSheet.create({
   card: {
-    alignItems: 'center'
+    flex: 1,
+    alignItems: 'center',
   },
   text: {
-    fontSize: 18,
+    fontSize: 23,
     paddingTop: 10,
-    paddingBottom: 10
-  }
+    paddingBottom: 10,
+  },
 });

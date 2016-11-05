@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Exponent from 'exponent';
 import IP from './IP.js';
-import Promises from 'bluebird';
+import Promise from 'bluebird';
 
 
 /*********************************   GETLOGOS  ***********************************/

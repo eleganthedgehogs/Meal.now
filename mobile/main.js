@@ -1,4 +1,4 @@
-import Exponent from 'exponent';
+import Exponent, { Font } from 'exponent';
 import React from 'react';
 import { Navigator, AsyncStorage } from 'react-native';
 
@@ -6,7 +6,8 @@ import NavBar from './app/NavBar';
 import Login from './app/Login';
 import MealList from './app/MealList';
 import Photo from './app/Photo';
-import ActionButton from './app/ActionButton'
+import ActionButton from './app/ActionButton';
+import Lobster from './assets/fonts/Lobster-Regular.ttf';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends React.Component {
       token: null,
       mealList: [],
       searchRecipes: [],
+      fontLoaded: false,
     };
     this.getMealList = this.getMealList.bind(this);
     this.getToken = this.getToken.bind(this);
@@ -33,6 +35,14 @@ class App extends React.Component {
   getToken() { return this.state.token; }
   getUserId() { return this.state.userId; }
   getSearchRecipes() { return this.state.searchRecipes; }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      Lobster: Lobster,
+    });
+
+    this.setState({ fontLoaded: true });
+  }
 
   updateMealList(mealList) { this.setState({ mealList }); }
   updateToken(token) { this.setState({ token }); }

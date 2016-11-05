@@ -6,24 +6,28 @@ import moment from 'moment';
 
 const PhotoListItem = (props) => (
   <CardItem style={styles.card} >
-      <Text style={styles.text} >{ moment(props.photo.date).calendar()}</Text>                       
+      <Text style={styles.name} >{ props.photo.name}</Text>
+      <Text style={styles.date} >{ moment(props.photo.date).calendar()}</Text>                       
       <Image source={{ uri: props.photo.uri }} />
-      <Text style={styles.text} >{ props.photo.name}</Text>
   </CardItem>
-)
+);
 
 export default PhotoListItem;
-
 
 
 /************************ STYLES *************************/
 const styles = StyleSheet.create({
   card: {
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingBottom: 15,
   },
-  text: {
-    fontSize: 18,
-    paddingTop: 10,
-    paddingBottom: 10
-  }
+  name: {
+    fontSize: 23,
+    paddingTop: 5,
+    paddingBottom: 0,
+  },
+  date: {
+    fontSize: 12,
+    paddingBottom: 10,
+  },
 });

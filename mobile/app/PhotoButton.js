@@ -65,17 +65,17 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   photoCircle: {
-    width: 100,
-    height: 100,
+    width: 90,
+    height: 90,
     borderRadius: 100,
     backgroundColor: '#1E90FF',
     alignItems: 'center',
-    marginBottom: 50,
     // textAlign: 'center',
     // textAlignVertical: 'center',
   },
   photoButton: {
     color: 'white',
-    marginTop: 15
+    fontSize: 50,
+    marginTop: 18,
   },
 });
