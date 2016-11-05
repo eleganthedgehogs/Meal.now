@@ -24,7 +24,7 @@ class PhotoList extends Component {
 				<Header title={'Meal.Now'}/>
 
 				<ScrollView
-				  contentContainerStyle={styles.conatiner}
+				  contentContainerStyle={styles.scroll}
 				  showsVerticalScrollIndicator={false}
 				  alwaysBounceVertical
 				>
@@ -36,7 +36,7 @@ class PhotoList extends Component {
 		)
 	}
 }
-
+      
 export default PhotoList;
 
 /************************ STYLES *************************/
@@ -45,6 +45,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'stretch',
-    backgroundColor: 'white'
-  }
+    backgroundColor: 'white',
+  },
+  scroll: {
+    alignItems: 'stretch',
+  },
 });

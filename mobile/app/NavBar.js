@@ -62,13 +62,14 @@ const width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     width,
-    height: 125,
+    height: 110,
     backgroundColor: 'white',
     borderColor: 'gray',
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
   },
+
   PhotoButton: {
     position: 'absolute',
     top: 20
