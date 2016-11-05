@@ -10,7 +10,6 @@ const MainHeader = (props) => {
     <View style = {styles.view}>
       <Header style={styles.header}>
         <Text style={styles.headline}>
-          {props.title}
           Meal.now
         </Text>
       </Header>
