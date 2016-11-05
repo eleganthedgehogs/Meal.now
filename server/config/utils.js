@@ -32,6 +32,9 @@ const getPlaces = (lat, long) => {
   .catch(err => console.log('error getting places', err));
 };
 
+// queries the Nutritionix API for restaurants
+// and returns the restaurant that has the highest
+// matching percentage.
 const getRestaurant = (brand) => {
   brand = brand.toLowerCase().replace(/[^a-z]+/g, '');
   const brandQuery = `https://api.nutritionix.com/v1_1/brand/search?query=${brand}&type=1&min_score=1&appId=${secret.NUTRITIONIX_ID}&appKey=${secret.NUTRITIONIX_KEY}`;
@@ -45,6 +48,9 @@ const getRestaurant = (brand) => {
   .catch(err => console.log('error getting restaurant', err));
 };
 
+// Creates an array of promises that query the Nutritionix API,
+// using each tag as the search query. Then, return a mapped array
+// of item ids and names
 const getMenu = (id, tags) => {
   const tagPromises = tags.map((tag) => {
     const menuQuery = `https://api.nutritionix.com/v1_1/search/${tag}?brand_id=${id}&results=0%3A10&cal_min=400&cal_max=50000&fields=item_name&appId=${secret.NUTRITIONIX_ID}&appKey=${secret.NUTRITIONIX_KEY}`;
@@ -72,6 +78,8 @@ const getMenu = (id, tags) => {
   .catch(error => console.log('Error with the promise all getting the menu items', error));
 };
 
+// The least fun. Grabs the nutritional information
+// of a single item using the item id as the search query.
 const getNutritionalInformation = (id) => {
   const itemQuery = `https://api.nutritionix.com/v1_1/item?id=${id}&appId=${secret.NUTRITIONIX_ID}&appKey=${secret.NUTRITIONIX_KEY}`;
 
