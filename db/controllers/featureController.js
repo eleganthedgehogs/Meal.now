@@ -4,62 +4,50 @@ const s3 = require('../../server/config/helpers.js');
 const utils = require('../../server/config/utils.js');
 const _ = require('lodash');
 
-// exports.location = (req, res) => {
-// // user sends the location to the server
-// // grab nearby restaurants through Google Places API
-
-// };
-
 exports.uploadImage = (req, res) => {
   if (!req.file) {
     console.log('File not saved');
     res.status(404).send();
-  } else {
-    const lat = req.headers.latitude;
-    const long = req.headers.longitude;
+    return;
+  }
 
-    s3.upload(req.file.path, {}, (err, versions, meta) => {
-      if (err) {
-        return console.log('error uploading file:', err);
-      }
+  const lat = req.headers.latitude;
+  const long = req.headers.longitude;
 
-      const original = versions.filter(image => image.original)[0];
+  s3.upload(req.file.path, {}, (err, versions) => {
+    if (err) {
+      return console.log('error uploading file:', err);
+    }
 
-      // ISN'T RETURNING TAGS
-      utils.clarifai(original.url)
-      .then((tags) => {
-        utils.getPlaces(lat, long)
-        .then((places) => {
-          const pictureData = {
-            tags: tags.classes.slice(0, 5),
-            restaurantName: '',
-            date: req.headers.date,
-            uri: original.url,
-            nutritionalInfo: '',
-            latitude: lat,
-            longitude: long,
-          };
+    const original = versions.filter(image => image.original)[0];
 
-          Feature.create(pictureData)
-          .then((picture) => {
-            res.send('Successfully saved created the geotagged photo');
-          })
-          .catch((error) => {
-            console.log('Error saving to database', error);
-            res.status(404).send(error);
-          });
-        })
-        .catch((error) => {
-          console.log('Error getting places in featureController', error);
-          res.status(404).end();
-        });
+    // ISN'T RETURNING TAGS
+    utils.clarifai(original.url)
+    .then((tags) => {
+      const pictureData = {
+        tags: tags.classes.slice(0, 5),
+        restaurantName: '',
+        date: req.headers.date,
+        uri: original.url,
+        nutritionalInfo: '',
+        latitude: lat,
+        longitude: long,
+      };
+
+      Feature.create(pictureData)
+      .then(() => {
+        res.send('Successfully saved created the geotagged photo');
       })
       .catch((error) => {
-        console.log('Error getting tags for picture', error);
-        res.status(404).end();
+        console.log('Error saving to database', error);
+        res.status(404).send(error);
       });
+    })
+    .catch((error) => {
+      console.log('Error getting tags for picture', error);
+      res.status(404).end();
     });
-  }
+  });
 };
 
 exports.getNearbyPlaces = (req, res) => {
@@ -68,7 +56,6 @@ exports.getNearbyPlaces = (req, res) => {
 
   utils.getPlaces(lat, long)
   .then((places) => {
-    console.log(places);
     res.json(places);
   });
 };
@@ -80,11 +67,9 @@ exports.getMenu = (req, res) => {
   Feature.findOne({ date })
   .then((photo) => {
     const tags = photo.tags;
-    console.log(restaurantName);
-    console.log(date);
+
     utils.getRestaurant(restaurantName)
     .then((restaurant) => {
-      console.log(restaurant);
       const restaurantId = restaurant._id;
 
       utils.getMenu(restaurantId, tags)
@@ -123,7 +108,6 @@ exports.getItem = (req, res) => {
   .then((photo) => {
     utils.getNutritionalInformation(id)
     .then((info) => {
-      console.log(info);
       photo.name = name;
       photo.nutritionalInfo = JSON.stringify(info);
 
