@@ -26,5 +26,6 @@ router.route('/upload').post(upload.single('image'), featureController.uploadIma
 router.route('/location').get(featureController.getNearbyPlaces);
 router.route('/menu').get(featureController.getMenu);
 router.route('/item').get(featureController.getItem);
+router.route('/photos').get(featureController.getAllPhotos);
 
 module.exports = router;
