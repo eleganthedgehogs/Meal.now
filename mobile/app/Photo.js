@@ -27,11 +27,14 @@ class Photo extends Component {
   }
 }
 
+
+export default Photo;
+
+/************************ STYLES *************************/
+
 const styles = {
 	TouchableHighlight: {
 		backgroundColor: 'red',
 		flex: 1
 	}
 }
-
-export default Photo;

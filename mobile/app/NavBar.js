@@ -5,25 +5,12 @@ import { Block } from 'native-base';
 import Button from './Button';
 import PhotoButton from './PhotoButton';
 import MealList from './MealList';
-import ShoppingList from './ShoppingList';
 import AddMeal from './AddMeal';
 import Photo from './Photo';
 import utils from '../Utils/utils';
 import PickRestaurant from './PickRestaurant';
 import PhotoList from './PhotoList'
-const width = Dimensions.get('window').width;
 
-const styles = StyleSheet.create({
-  container: {
-    width,
-    height: 125,
-    backgroundColor: 'white',
-    borderColor: 'gray',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  }
-});
 
 const moveTo = (navigator, component, ...props) => {
   navigator.replace({ component, props });
@@ -66,3 +53,19 @@ const NavBar = (props) => {
 };
 
 export default NavBar;
+
+/************************ STYLES *************************/
+
+const width = Dimensions.get('window').width;
+
+const styles = StyleSheet.create({
+  container: {
+    width,
+    height: 125,
+    backgroundColor: 'white',
+    borderColor: 'gray',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  }
+});

@@ -6,47 +6,11 @@ import {
   Dimensions,
   StyleSheet,
 } from 'react-native';
-import HeaderDisplay from './HeaderDisplay';
+import Header from './Header';
 import Button from './Button';
 import Column from './Column';
-import HeadBuffer from './HeadBuffer';
 
 const width = Dimensions.get('window').width;
-
-const styles = StyleSheet.create({
-  buttonContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    width: width * 0.9,
-    marginTop: 10,
-  },
-  container: {
-    alignItems: 'center',
-    flex: 1,
-  },
-  picture: {
-    width: width * 0.9,
-    height: 250,
-    opacity: 1,
-    borderRadius: 5,
-    marginTop: 10,
-  },
-  click: { fontSize: 30 },
-  table: {
-    width: width * 0.9,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderWidth: 2,
-    borderColor: 'black',
-    borderRadius: 5,
-    padding: 5,
-    marginTop: 10,
-  },
-  scroller: {
-    marginBottom: 50,
-  },
-});
 
 /* eslint-disable no-param-reassign */
 const compileNutrition = (data) => {
@@ -72,8 +36,7 @@ const compileNutrition = (data) => {
 
 const InfoDisplay = props => (
   <View style={styles.container}>
-    <HeadBuffer />
-    <HeaderDisplay recipe={props.recipe} />
+    <Header />
     <ScrollView contentContainerStyle={styles.scroller}>
       <Image
         style={styles.picture}
@@ -135,3 +98,40 @@ const InfoDisplay = props => (
 );
 
 export default InfoDisplay;
+
+/************************ STYLES *************************/
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    width: width * 0.9,
+    marginTop: 10,
+  },
+  container: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  picture: {
+    width: width * 0.9,
+    height: 250,
+    opacity: 1,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  click: { fontSize: 30 },
+  table: {
+    width: width * 0.9,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 5,
+    padding: 5,
+    marginTop: 10,
+  },
+  scroller: {
+    marginBottom: 50,
+  },
+});

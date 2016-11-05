@@ -2,6 +2,34 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { Ionicons } from '@exponent/vector-icons';
 
+const Button = ({ text, icon, onclick }) => { 
+  if(text !== undefined) {
+    return (
+      <TouchableHighlight
+        style={styles.container}
+        onPress={onclick}
+      >
+        <View
+          style={styles.container2}
+          elevation={3}
+        >
+          <Text style={styles.text}> {text} </Text>
+        </View>
+      </TouchableHighlight>
+    )
+  }
+  return (
+      <TouchableHighlight
+        onPress={onclick}
+      >
+       <Ionicons name={icon} size={60} style={styles.icon} onPress={onclick} /> 
+      </TouchableHighlight>
+  ) 
+};
+
+export default Button;
+
+/************************ STYLES *************************/
 
 const styles = StyleSheet.create({
   container: {
@@ -44,30 +72,3 @@ const styles = StyleSheet.create({
     marginTop: 30,
   }
 });
-
-const Button = ({ text, icon, onclick }) => { 
-  if(text !== undefined) {
-    return (
-      <TouchableHighlight
-        style={styles.container}
-        onPress={onclick}
-      >
-        <View
-          style={styles.container2}
-          elevation={3}
-        >
-          <Text style={styles.text}> {text} </Text>
-        </View>
-      </TouchableHighlight>
-    )
-  }
-  return (
-      <TouchableHighlight
-        onPress={onclick}
-      >
-       <Ionicons name={icon} size={60} style={styles.icon} onPress={onclick} /> 
-      </TouchableHighlight>
-  ) 
-};
-
-export default Button;

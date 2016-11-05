@@ -136,6 +136,7 @@ export default class Login extends React.Component {
   }
 }
 
+/************************ STYLES *************************/
 
 const width = Dimensions.get('window').width;
 const background = require('../assets/resized_background.jpg');

@@ -4,6 +4,20 @@ import {Text, Header} from 'native-base';
 
 const width = Dimensions.get('window').width;
 
+const MainHeader = () => {
+	return (
+      <Header style={styles.header}>
+        <Text style={styles.headline}>
+          Meal.next
+        </Text>
+      </Header>
+ 	)
+}
+
+export default MainHeader;
+
+/************************ STYLES *************************/
+
 const styles = StyleSheet.create({
   headline: {
     fontFamily: 'Verdana',
@@ -17,15 +31,3 @@ const styles = StyleSheet.create({
     shadowOpacity: 0
   }
 });
-
-const MainHeader = () => {
-	return (
-      <Header style={styles.header}>
-        <Text style={styles.headline}>
-          Meal.next
-        </Text>
-      </Header>
- 	)
-}
-
-export default MainHeader;
