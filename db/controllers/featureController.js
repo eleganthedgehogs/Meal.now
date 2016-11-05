@@ -126,3 +126,15 @@ exports.getItem = (req, res) => {
     res.status(404).end();
   });
 };
+
+exports.getAllPhotos = (req, res) => {
+  Feature.find({})
+  .then((allPhotos) => {
+    console.log(allPhotos);
+    res.json(allPhotos);
+  })
+  .catch((error) => {
+    console.log('Error retrieving all photos from the database', error);
+    res.status(404).end();
+  });
+};

@@ -36,7 +36,8 @@ const getPlaces = (lat, long) => {
 // and returns the restaurant that has the highest
 // matching percentage.
 const getRestaurant = (brand) => {
-  brand = brand.toLowerCase().replace(/[^a-z]+/g, '');
+  brand = brand.toLowerCase().replace(/\'/g, '').replace(/ /g, '%20');
+  console.log(brand);
   const brandQuery = `https://api.nutritionix.com/v1_1/brand/search?query=${brand}&type=1&min_score=1&appId=${secret.NUTRITIONIX_ID}&appKey=${secret.NUTRITIONIX_KEY}`;
 
   return rp({
