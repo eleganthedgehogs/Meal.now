@@ -6,7 +6,6 @@ import NavBar from './app/NavBar';
 import Login from './app/Login';
 import MealList from './app/MealList';
 import Photo from './app/Photo';
-import Camera from './app/Camera';
 import ActionButton from './app/ActionButton'
 
 class App extends React.Component {
@@ -17,7 +16,6 @@ class App extends React.Component {
       token: null,
       mealList: [],
       searchRecipes: [],
-      shoppingList: [],
     };
     this.getMealList = this.getMealList.bind(this);
     this.getToken = this.getToken.bind(this);

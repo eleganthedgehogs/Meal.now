@@ -2,6 +2,34 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { Ionicons } from '@exponent/vector-icons';
 
+const PhotoButton = ({ text, icon, onclick }) => {
+  if (text !== undefined) {
+    return (
+      <TouchableHighlight
+        style={styles.container}
+        onPress={onclick}
+      >
+        <View
+          style={styles.container2}
+          elevation={3}
+        >
+          <Text style={styles.text}> {text} </Text>
+        </View>
+      </TouchableHighlight>
+    )
+  }
+  return (
+      <TouchableHighlight
+        onPress={onclick} style={styles.photoCircle}
+      >
+       <Ionicons name={icon} style={styles.photoButton} size={65} onPress={onclick} /> 
+      </TouchableHighlight>
+  ) 
+};
+
+export default PhotoButton;
+
+/************************ STYLES *************************/
 
 const styles = StyleSheet.create({
   container: {
@@ -51,30 +79,3 @@ const styles = StyleSheet.create({
     marginTop: 15
   },
 });
-
-const PhotoButton = ({ text, icon, onclick }) => {
-  if (text !== undefined) {
-    return (
-      <TouchableHighlight
-        style={styles.container}
-        onPress={onclick}
-      >
-        <View
-          style={styles.container2}
-          elevation={3}
-        >
-          <Text style={styles.text}> {text} </Text>
-        </View>
-      </TouchableHighlight>
-    )
-  }
-  return (
-      <TouchableHighlight
-        onPress={onclick} style={styles.photoCircle}
-      >
-       <Ionicons name={icon} style={styles.photoButton} size={65} onPress={onclick} /> 
-      </TouchableHighlight>
-  ) 
-};
-
-export default PhotoButton;

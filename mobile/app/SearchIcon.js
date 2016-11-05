@@ -3,6 +3,20 @@ import { View, Dimensions, StyleSheet, AsyncStorage, Button, TouchableHighlight 
 import {Text, Header} from 'native-base';
 import { Ionicons } from '@exponent/vector-icons';
 
+
+
+const SearchIcon = () => {
+	return (
+    <TouchableHighlight style={styles.container}>
+      <Ionicons name="ios-search" style={styles.icon}/>
+    </TouchableHighlight>
+ 	)
+}
+
+export default SearchIcon;
+
+/************************ STYLES *************************/
+
 const styles = StyleSheet.create({
   icon: {
     fontSize: 10,
@@ -17,13 +31,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   }
 })
-
-const SearchIcon = () => {
-	return (
-    <TouchableHighlight style={styles.container}>
-      <Ionicons name="ios-search" style={styles.icon}/>
-    </TouchableHighlight>
- 	)
-}
-
-export default SearchIcon;

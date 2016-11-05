@@ -6,24 +6,6 @@ import utils from '../Utils/utils';
 import MenuItem from './MenuItem';
 
 
-const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    flex: 1,
-    alignItems: 'stretch',
-  },
-  contentContainer: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    paddingBottom: 60,
-  },
-  icon: {
-    position: 'absolute',
-    top: 100,
-    right: 25
-  }
-});
-
 const gotoNext = (navigator, item) => {
   navigator.replace({
     component: MenuItem,
@@ -63,3 +45,24 @@ class PickMenuItem extends React.Component {
 }
 
 export default PickMenuItem;
+
+/************************ STYLES *************************/
+
+
+const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+    flex: 1,
+    alignItems: 'stretch',
+  },
+  contentContainer: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    paddingBottom: 60,
+  },
+  icon: {
+    position: 'absolute',
+    top: 100,
+    right: 25
+  }
+});
