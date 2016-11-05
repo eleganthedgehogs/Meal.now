@@ -4,26 +4,6 @@ import HeaderAddMeal from './HeaderAddMeal';
 import { Container, Content, List, ListItem, Thumbnail, Title } from 'native-base';
 import utils from '../Utils/utils';
 
-
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    flex: 1,
-    alignItems: 'stretch',
-  },
-  contentContainer: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    paddingBottom: 60,
-  },
-  icon: {
-    position: 'absolute',
-    top: 100,
-    right: 25
-  }
-});
-
 class MenuItem extends React.Component {
   constructor(props) {
     super(props);
@@ -57,3 +37,23 @@ class MenuItem extends React.Component {
 }
 
 export default MenuItem;
+
+/************************ STYLES *************************/
+
+const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+    flex: 1,
+    alignItems: 'stretch',
+  },
+  contentContainer: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    paddingBottom: 60,
+  },
+  icon: {
+    position: 'absolute',
+    top: 100,
+    right: 25
+  }
+});

@@ -3,6 +3,18 @@ import { View, Dimensions, Text, StyleSheet } from 'react-native';
 
 const width = Dimensions.get('window').width;
 
+const HeaderDisplay = ({ recipe }) => (
+  <View style={styles.logo}>
+    <Text style={styles.headline}>
+      {recipe.label}
+    </Text>
+  </View>
+);
+
+export default HeaderDisplay;
+
+/************************ STYLES *************************/
+
 const styles = StyleSheet.create({
   logo: {
     width,
@@ -20,13 +32,3 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
-const HeaderDisplay = ({ recipe }) => (
-  <View style={styles.logo}>
-    <Text style={styles.headline}>
-      {recipe.label}
-    </Text>
-  </View>
-);
-
-export default HeaderDisplay;

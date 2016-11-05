@@ -2,36 +2,14 @@ import React from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import MealTile from './MealTile';
 import Searchbar from './Searchbar';
-import LogoDisplay from './LogoDisplay';
 import InfoDisplay from './InfoDisplay';
-import HeadBuffer from './HeadBuffer';
 import HeaderAddMeal from './HeaderAddMeal';
 import SearchIcon from './SearchIcon';
 import IP from '../Utils/IP';
 
-const recipeUrl = 'https://mealdotnext4.herokuapp.com/api/recipe/';
-const mealUrl = 'https://mealdotnext4.herokuapp.com/api/meal/';
-
 const localRecipeUrl = IP.localRecipeUrl;
 const localMealUrl = IP.localMealUrl;
 
-const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    flex: 1,
-    alignItems: 'center',
-  },
-  contentContainer: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    paddingBottom: 60,
-  },
-  icon: {
-    position: 'absolute',
-    top: 100,
-    right: 25
-  }
-});
 
 export default class AddMeal extends React.Component {
   constructor(props) {
@@ -105,3 +83,23 @@ export default class AddMeal extends React.Component {
   }
 }
 
+/************************ STYLES *************************/
+
+
+const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+    flex: 1,
+    alignItems: 'center',
+  },
+  contentContainer: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    paddingBottom: 60,
+  },
+  icon: {
+    position: 'absolute',
+    top: 100,
+    right: 25
+  }
+});

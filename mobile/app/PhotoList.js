@@ -5,10 +5,6 @@ import PhotoListItem from './PhotoListItem';
 import utils from '../Utils/utils';
 import { Container, Content } from 'native-base';
 
-
-
-
-
 class PhotoList extends Component {
 	constructor(props) {
 		super(props);
