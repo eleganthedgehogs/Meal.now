@@ -32,7 +32,7 @@ const getPlaces = (lat, long) => {
 };
 
 const getRestaurant = (brand) => {
-  brand = brand.toLowerCase().replace(/ /g, '');
+  brand = brand.toLowerCase().replace(/[^a-z]+/g, '');
   const brandQuery = `https://api.nutritionix.com/v1_1/brand/search?query=${brand}&type=1&min_score=1&appId=${secret.NUTRITIONIX_ID}&appKey=${secret.NUTRITIONIX_KEY}`;
 
   return rp({
