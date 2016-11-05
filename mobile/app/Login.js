@@ -63,8 +63,8 @@ export default class Login extends React.Component {
   authUser(url) {
     console.log('calling auth user with', url)
     console.log('IP', IP)
-    // const value = this.refs.form.getValue();
-    if (value = true) { // remove true
+    const value = this.refs.form.getValue();
+    if (value) { // remove true
       fetch(url, {
         method: 'POST',
         headers: {
@@ -72,8 +72,8 @@ export default class Login extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: 'q', //value.username,
-          password: 'q' //value.password,
+          username: value.username,
+          password: value.password,
         }),
       })
       .then(response => response.json())
@@ -94,8 +94,6 @@ export default class Login extends React.Component {
   }
 
   render() {
-    this.authUser(localLoginUrl);
-    return null
     return (
       <View style={styles.main}>
         <Image

@@ -1,4 +1,4 @@
-const IP_ADDRESS = '10.6.27.17';
+const IP_ADDRESS = '10.6.19.49';
 // const IP_ADDRESS = 'localhost';
 const PORT = 8000;
 
