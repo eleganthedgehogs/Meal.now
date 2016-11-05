@@ -1,7 +1,31 @@
 import React, { Component } from 'react';
 import Exponent from 'exponent';
 import IP from './IP.js';
+import Promises from 'bluebird';
 
+
+/*********************************   GETLOGOS  ***********************************/
+const getRestaurantLogo = (restaurantName) => {
+  var queryName = restaurantName.replace(/ /g,'+');
+
+  return new Promise((resolve, reject) => {
+    return fetch(`https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=${queryName}+logo&count=1`,
+      {
+        method: 'GET',
+        json: true,
+        data: '{body}',
+        headers: {
+          "Ocp-Apim-Subscription-Key": '2a4ceeea15854a42876b5a3e5efa3e58'
+        },
+    })
+  .then((response) => response.json())
+  .then(responseJSON => {
+      console.log('responseJSON:', responseJSON);
+      resolve(responseJSON);
+    })
+    .catch(err => console.log('Error from Bing API', err));
+  })
+}
 
 /*********************************   PHOTOLIST  ***********************************/
 const PhotoListURL = IP.PhotoListURL;
@@ -91,6 +115,7 @@ const getRestaurants = (lat, long, token) => {
 	.catch((error) => console.error('Error from get restaurants', error));
 }
 
+
 const getRestaurantMenu = (name, date, token) => {
 	console.log(name, date, token, 'from getRestaurantMenu')
 	return fetch(`${getRestaurantMenuURL}?name=${name}&date=${date}`,
@@ -102,7 +127,10 @@ const getRestaurantMenu = (name, date, token) => {
 	  },
 	})
 	.then((response) => response.json())
-	.then(responseJSON => responseJSON)
+	.then(responseJSON => {
+		console.log('responseJSON:', responseJSON);
+		return responseJSON;
+	})
 	.catch((error) => console.error('Error from get getRestaurantMenu', error));
 }
 
@@ -116,13 +144,10 @@ const getMenuItem = (item, date, token) => {
 	  },
 	})
 	.then((response) => response.json())
-	.then(responseJSON => {
-		console.log('Response JSON in getMenuItem in utils:', responseJSON);
-		return responseJSON;
-	})
+	.then(responseJSON => responseJSON)
 	.catch((error) => console.error('Error from get getMenuItem', error));
 
 }
 
 
-export default { getPhotoList, takePhotoAsync, postPhotoAndLocation, getMenuItem, getLocationAsync, getRestaurants, getRestaurantMenu }
+export default { getRestaurantLogo ,getPhotoList, takePhotoAsync, postPhotoAndLocation, getMenuItem, getLocationAsync, getRestaurants, getRestaurantMenu }

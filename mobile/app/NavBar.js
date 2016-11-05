@@ -1,4 +1,3 @@
-// https://github.com/facebook/react-native/blob/b998e5a7b74905b30b1137a02e14cd5e6f97fccc/Libraries/CustomComponents/Navigator/Navigator.js
 import React from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import { Block } from 'native-base';
@@ -23,6 +22,8 @@ const gotoNext = (navigator, restaurants, date, token) => {
   });
 }
 
+
+
 const NavBar = (props) => {
   const token = props.getToken();
 
@@ -30,7 +31,7 @@ const NavBar = (props) => {
     return (
       <View style={styles.container}>
           <Button icon="ios-list-box" onclick={() => moveTo(props.navigator, MealList)} />
-          <PhotoButton icon="md-camera" onclick={() => {
+          <PhotoButton style={styles.PhotoButton} icon="md-camera" onclick={() => {
             utils.getLocationAsync().then(loc => {
               utils.takePhotoAsync().then(photo => {
                 if (!photo.cancelled) {
@@ -67,5 +68,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+  },
+  PhotoButton: {
+    position: 'absolute',
+    top: 20
   }
 });
