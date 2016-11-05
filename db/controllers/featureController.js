@@ -15,7 +15,9 @@ exports.uploadImage = (req, res) => {
     console.log('File not saved');
     res.status(404).send();
   } else {
-    console.log(req.file.path);
+    const lat = req.headers.latitude;
+    const long = req.headers.longitude;
+
     s3.upload(req.file.path, {}, (err, versions, meta) => {
       if (err) {
         return console.log('error uploading file:', err);
@@ -26,21 +28,30 @@ exports.uploadImage = (req, res) => {
       // ISN'T RETURNING TAGS
       utils.clarifai(original.url)
       .then((tags) => {
-        const pictureData = {
-          tags: tags.classes.slice(0, 5),
-          restaurantName: '',
-          date: req.headers.date,
-          uri: original.url,
-          nutritionalInfo: '',
-        };
+        utils.getPlaces(lat, long)
+        .then((places) => {
+          const pictureData = {
+            tags: tags.classes.slice(0, 5),
+            restaurantName: '',
+            date: req.headers.date,
+            uri: original.url,
+            nutritionalInfo: '',
+            latitude: lat,
+            longitude: long,
+          };
 
-        Feature.create(pictureData)
-        .then((picture) => {
-          res.send(picture);
+          Feature.create(pictureData)
+          .then((picture) => {
+            res.send('Successfully saved created the geotagged photo');
+          })
+          .catch((error) => {
+            console.log('Error saving to database', error);
+            res.status(404).send(error);
+          });
         })
         .catch((error) => {
-          console.log('Error saving to database', error);
-          res.status(404).send(error);
+          console.log('Error getting places in featureController', error);
+          res.status(404).end();
         });
       })
       .catch((error) => {
@@ -52,30 +63,28 @@ exports.uploadImage = (req, res) => {
 };
 
 exports.getNearbyPlaces = (req, res) => {
-  console.log('getting location');
-  const lat = req.body.coords.latitude;
-  const long = req.body.coords.longitude;
+  const long = req.param('longitude');
+  const lat = req.param('latitude');
 
   utils.getPlaces(lat, long)
   .then((places) => {
-    res.send({ places });
-  })
-  .catch((error) => {
-    console.log('Error getting places in featureController', error);
-    res.status(404).end();
+    console.log(places);
+    res.json(places);
   });
 };
 
 exports.getMenu = (req, res) => {
-  const restaurantName = req.body.name;
-  const date = req.body.date;
+  const restaurantName = req.param('name');
+  const date = req.param('date');
 
   Feature.findOne({ date })
   .then((photo) => {
     const tags = photo.tags;
-
+    console.log(restaurantName);
+    console.log(date);
     utils.getRestaurant(restaurantName)
     .then((restaurant) => {
+      console.log(restaurant);
       const restaurantId = restaurant._id;
 
       utils.getMenu(restaurantId, tags)
@@ -89,7 +98,7 @@ exports.getMenu = (req, res) => {
             console.log('error saving restaurant name', error);
             res.status(404).end();
           } else {
-            res.send({ menu });
+            res.json(menu);
           }
         });
       })
@@ -106,14 +115,16 @@ exports.getMenu = (req, res) => {
 };
 
 exports.getItem = (req, res) => {
-  const name = req.body.item.name;
-  const id = req.body.item._id;
-  const date = req.body.date;
+  const name = req.param('name');
+  const id = req.param('id');
+  const date = req.param('date');
 
   Feature.findOne({ date })
   .then((photo) => {
     utils.getNutritionalInformation(id)
     .then((info) => {
+      console.log(info);
+      photo.name = name;
       photo.nutritionalInfo = JSON.stringify(info);
 
       photo.save((error) => {
@@ -121,7 +132,7 @@ exports.getItem = (req, res) => {
           console.log('Error saving nutritional info', error);
           res.status(404).end();
         } else {
-          res.send({ photo });
+          res.json(photo);
         }
       });
     });

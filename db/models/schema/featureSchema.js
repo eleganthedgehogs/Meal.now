@@ -7,6 +7,8 @@ const FeatureSchema = new mongoose.Schema({
   date: Number,
   uri: String,
   nutritionalInfo: String,
+  latitude: String,
+  longitude: String,
 });
 
 module.exports = FeatureSchema;
