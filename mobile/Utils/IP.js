@@ -20,5 +20,18 @@ const getRestaurantsURL = `http://${IP_ADDRESS}:${PORT}/api/feature/location`;
 const getRestaurantMenuURL = `http://${IP_ADDRESS}:${PORT}/api/feature/menu`;
 const getMenuItemURL = `http://${IP_ADDRESS}:${PORT}/api/feature/item`;
 
+/*********************   PhotoList.js   ***********************/
+const PhotoListURL = `http://${IP_ADDRESS}:${PORT}/api/feature/photos`;
 
-export default { getMenuItemURL, getRestaurantMenuURL, localRecipeUrl, localMealUrl, localLoginUrl, localSignupUrl, localUserUrl, postPhotoAndLocationURL, getRestaurantsURL }
+
+export default { 
+	PhotoListURL, 
+	getMenuItemURL, 
+	getRestaurantMenuURL, 
+	localRecipeUrl, 
+	localMealUrl, 
+	localLoginUrl, 
+	localSignupUrl, 
+	localUserUrl, 
+	postPhotoAndLocationURL, 
+	getRestaurantsURL }

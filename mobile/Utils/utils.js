@@ -2,6 +2,28 @@ import React, { Component } from 'react';
 import Exponent from 'exponent';
 import IP from './IP.js';
 
+
+/*********************************   PHOTOLIST  ***********************************/
+const PhotoListURL = IP.PhotoListURL;
+
+const getPhotoList = (token) => {
+	return fetch(PhotoListURL,
+	{
+	  method: 'GET',
+	  headers: {
+	    'Content-Type': 'application/json',
+	    'x-access-token': token
+	  }
+	})
+	.then((response) => response.json())
+	.then(responseJSON => {
+		console.log(responseJSON, 'responseJSON from getPhotoList')
+		return responseJSON
+	})
+	.catch((error) => console.error('Error from get getPhotoList', error));
+}
+
+
 /*********************************   PHOTO  ***********************************/
 
 const takePhotoAsync = async () => await Exponent.ImagePicker.launchCameraAsync({});
@@ -103,4 +125,4 @@ const getMenuItem = (item, date, token) => {
 }
 
 
-export default { takePhotoAsync, postPhotoAndLocation, getMenuItem, getLocationAsync, getRestaurants, getRestaurantMenu }
+export default { getPhotoList, takePhotoAsync, postPhotoAndLocation, getMenuItem, getLocationAsync, getRestaurants, getRestaurantMenu }

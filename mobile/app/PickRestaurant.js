@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 100,
     right: 25
+  },
+  text: {
+    paddingTop: 5,
+    paddingBottom: 5
   }
 });
 
@@ -53,7 +57,7 @@ class PickRestaurant extends React.Component {
                     console.log('Menu data from PickRestaurant:', menu)
                     gotoNext(this.props.navigator, menu, this.props.date, this.props.token);
                   })}>
-                    <Text>{name}</Text>
+                    <Text style={styles.text}>{name}</Text>
                 </ListItem>  
             ))}
           </List> 
