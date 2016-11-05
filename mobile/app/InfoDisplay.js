@@ -36,7 +36,7 @@ const compileNutrition = (data) => {
 
 const InfoDisplay = props => (
   <View style={styles.container}>
-    <Header />
+    <Header title={props.recipe.label} />
     <ScrollView contentContainerStyle={styles.scroller}>
       <Image
         style={styles.picture}

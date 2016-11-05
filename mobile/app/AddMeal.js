@@ -3,7 +3,7 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 import MealTile from './MealTile';
 import Searchbar from './Searchbar';
 import InfoDisplay from './InfoDisplay';
-import HeaderAddMeal from './HeaderAddMeal';
+import Header from './Header';
 import SearchIcon from './SearchIcon';
 import IP from '../Utils/IP';
 
@@ -63,7 +63,7 @@ export default class AddMeal extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <HeaderAddMeal />
+        <Header title={'Meal.Next'}/>
         <Searchbar enter={this.getData} />
         <ScrollView
           contentContainerStyle={styles.contentContainer}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import HeaderAddMeal from './HeaderAddMeal';
+import Header from './Header';
 import { Container, Content, List, ListItem, Thumbnail } from 'native-base';
 import utils from '../Utils/utils';
 import MenuItem from './MenuItem';
@@ -22,7 +22,7 @@ class PickMenuItem extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <HeaderAddMeal />
+        <Header />
         <ScrollView
           contentContainerStyle={styles.conatiner}
           showsVerticalScrollIndicator={false}

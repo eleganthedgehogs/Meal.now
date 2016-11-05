@@ -64,7 +64,7 @@ class MealList extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header />
+        <Header title={'Meal.Next'}/>
         <ScrollView
           contentContainerStyle={styles.conatiner}
           showsVerticalScrollIndicator={false}
@@ -73,7 +73,7 @@ class MealList extends React.Component {
           {this.props.getMealList().map((meal, i) => (
             <MealTile
               recipe={meal.recipe}
-              showInfo={this.gotoNext}
+              showInfo={() => this.gotoNext(meal.recipe)}
               key={i}
               mealId={meal._id} // eslint-disable-line no-underscore-dangle
             />
