@@ -46,8 +46,8 @@ const getRestaurant = (brand) => {
 
 const getMenu = (id, tags) => {
   const tagPromises = tags.map((tag) => {
-    let menuQuery = `https://api.nutritionix.com/v1_1/search/${tag}?brand_id=${id}&results=0%3A10&cal_min=400&cal_max=50000&fields=item_name&appId=${secret.NUTRITIONIX_ID}&appKey=${secret.NUTRITIONIX_KEY}`;
-
+    const menuQuery = `https://api.nutritionix.com/v1_1/search/${tag}?brand_id=${id}&results=0%3A10&cal_min=400&cal_max=50000&fields=item_name&appId=${secret.NUTRITIONIX_ID}&appKey=${secret.NUTRITIONIX_KEY}`;
+    console.log(menuQuery);
     return rp({
       uri: menuQuery,
       method: 'GET',
@@ -58,9 +58,8 @@ const getMenu = (id, tags) => {
   return Promise.all(tagPromises)
   .then((menuItems) => {
     const menu = menuItems.reduce((allItems, list) => {
-      return allItems.concat(list);
+      return allItems.concat(list.hits);
     }, []);
-    console.log(menu);
 
     return menu.map((item) => {
       return {
@@ -73,7 +72,7 @@ const getMenu = (id, tags) => {
 };
 
 const getNutritionalInformation = (id) => {
-  const itemQuery = `https://api.nutritionix.com/v1_1/item?id=${id}&appId=053dc0ce&appKey=075db362bce44299ff0e830b0e51a352`;
+  const itemQuery = `https://api.nutritionix.com/v1_1/item?id=${id}&appId=${secret.NUTRITIONIX_ID}&appKey=${secret.NUTRITIONIX_KEY}`;
 
   return rp({
     uri: itemQuery,

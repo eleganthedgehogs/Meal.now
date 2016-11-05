@@ -1,10 +1,10 @@
-// const IP_ADDRESS = '10.6.19.49';
-const IP_ADDRESS = 'localhost';
+const IP_ADDRESS = '10.6.27.17';
+// const IP_ADDRESS = 'localhost';
 const PORT = 8000;
 
 /*********************   AddMeal.js   ***********************/
 const localRecipeUrl = `http://${IP_ADDRESS}:${PORT}/api/recipe/`;
-const localMealUrl = `http://${IP_ADDRESS}:${PORT}/api/meal/`
+const localMealUrl = `http://${IP_ADDRESS}:${PORT}/api/meal/`;
 
 /*********************   Login.js   ***********************/
 const localLoginUrl = `http://${IP_ADDRESS}:${PORT}/api/user/authenticate`;
