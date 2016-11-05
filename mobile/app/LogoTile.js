@@ -1,14 +1,13 @@
 import React from 'react';
 import { Image, Text, StyleSheet } from 'react-native';
-import { CardItem } from 'native-base';
+import { CardItem, Card } from 'native-base';
 
-const LogoTile = ({ image }) => (
-  <CardItem style={styles.card} onPress={() => {
-      // showInfo(recipe, mealId);
-      // console.log('Recipe image:', recipe.image);
-    }} >                       
-      <Image style={styles.picture} source={{ uri: image }} />
-  </CardItem>
+const LogoTile = ({ image, onRestaurantPick }) => (
+
+    <CardItem onPress={() => onRestaurantPick()} style={styles.card}>                       
+        <Image style={styles.picture} source={{ uri: image }} />
+    </CardItem>
+
 )
 
 export default LogoTile;
