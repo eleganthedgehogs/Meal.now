@@ -9,7 +9,8 @@ import ShoppingList from './ShoppingList';
 import AddMeal from './AddMeal';
 import Photo from './Photo';
 import utils from '../Utils/utils';
-import PickRestaurant from './PickRestaurant'
+import PickRestaurant from './PickRestaurant';
+import PhotoList from './PhotoList'
 const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
@@ -24,8 +25,8 @@ const styles = StyleSheet.create({
   }
 });
 
-const moveTo = (navigator, component) => {
-  navigator.replace({ component });
+const moveTo = (navigator, component, ...props) => {
+  navigator.replace({ component, props });
 };
 
 const gotoNext = (navigator, restaurants, date, token) => {
@@ -37,7 +38,7 @@ const gotoNext = (navigator, restaurants, date, token) => {
 
 const NavBar = (props) => {
   const token = props.getToken();
-  const date = Date.now();
+
   if (props.navigator.getCurrentRoutes().length > 1) {
     return (
       <View style={styles.container}>
@@ -46,6 +47,7 @@ const NavBar = (props) => {
             utils.getLocationAsync().then(loc => {
               utils.takePhotoAsync().then(photo => {
                 if (!photo.cancelled) {
+                   const date = Date.now();
                    utils.postPhotoAndLocation(photo.uri, token, date, loc); 
                    utils.getRestaurants(loc.coords.latitude, loc.coords.longitude, token).then( restaurants => {
                       gotoNext(props.navigator, restaurants, date, token)
@@ -55,7 +57,7 @@ const NavBar = (props) => {
               })
             })
           }} />
-        <Button icon="ios-images" onclick={() => moveTo(props.navigator, AddMeal)} />
+        <Button icon="ios-images" onclick={() => moveTo(props.navigator, PhotoList, token)} />
       </View>      
     )    
   } else {
